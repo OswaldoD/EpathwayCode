@@ -35,7 +35,15 @@ class BLASTGene extends CActiveRecord {
     public $ExpectValThreshold;
     public $ConfigurationId;
     public $Organism; // nuevo
-    public $Organism2; // nuevo
+    public $GapOpen; // nuevo
+    public $GapExtend; // nuevo
+    public $Filter; // nuevo
+    public $Dropoff; // nuevo
+    public $Seqrange; // nuevo
+    public $Gapalign; // nuevo
+    public $Compstats; // nuevo
+    
+    
     
     /**
      * Returns the static model of the specified AR class.
@@ -69,7 +77,7 @@ class BLASTGene extends CActiveRecord {
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('Email,SequenceType,Sequence,Program,Database', 'safe', 'on' => 'search'),
-            array('Scores,Alignments,ExpectValThreshold,JobTitle,Organism2,Organism,Matriz', 'default', 'setOnEmpty' => true, 'value' => null),
+            array('Scores,Alignments,ExpectValThreshold,JobTitle,Dropoff,Seqrange,Compstats,Gapalign,Filter,GapOpen,GapExtend,Organism,Matriz', 'default', 'setOnEmpty' => true, 'value' => null),
         );
     }
 
@@ -100,8 +108,14 @@ class BLASTGene extends CActiveRecord {
             'Alignments' => 'Alignments',
             'ExpectValThreshold' => 'Expectation Value Threshold',
             'Organism' => 'Organism',
-            'Organism2' => 'Organism2',
+            'GapOpen' => 'Gap Open',
+            'GapExtend' => 'Gap Extend',
+            'Filter'=> 'Filter',
+            'Dropoff'=> 'Dropoff',
+            'Seqrange'=> 'Sequence Range',
+            'Gapalign' => 'Gap Align',
             'Matriz' => 'Matriz',
+            'Compstats'=>'Composition-Based Statistics',
             'idtbl_blastuserconfiguration' => 'Idtbl Blastuserconfiguration',
             'idtbl_user' => 'Idtbl User',
             'idtbl_ebidatabases' => 'Idtbl Ebidatabases',
@@ -120,7 +134,14 @@ class BLASTGene extends CActiveRecord {
             'Alignments' => 'Alignments',
             'ExpectValThreshold' => 'Expectation Value Threshold',
             'Organism' => 'Organism',
-            'Organism2' => 'Organism2',
+            'GapOpen' => 'Gap Open',
+            'GapOpen' => 'Gap Open',
+            'GapExtend' => 'Gap Extend',
+            'Filter'=> 'Filter',
+            'Dropoff'=> 'Dropoff',
+            'Seqrange'=> 'Sequence Range',
+            'Gapalign' => 'Gap Align',
+            'Compstats'=>'Composition-Based Statistics',
             'Matriz' => 'Matriz',
         );
     }

@@ -108,11 +108,53 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'Organism'); ?>
 	</div>
         <div class="row">
-		<?php echo $form->labelEx($model,'Organism2'); ?>
-		<?php echo $form->textField($model,'Organism2',array('size'=>60,'maxlength'=>5000)); ?>
-		<?php echo $form->error($model,'Organism2'); ?>
+		<?php echo $form->labelEx($model,'GapOpen'); ?>
+		<?php echo $form->textField($model,'GapOpen',array('size'=>60,'maxlength'=>5000, 'value'=>'11')); ?>
+		<?php echo $form->error($model,'GapOpen'); ?>
 	</div>
-    
+        <div class="row">
+		<?php echo $form->labelEx($model,'GapExtend'); ?>
+		<?php echo $form->textField($model,'GapExtend',array('size'=>60,'maxlength'=>5000, 'value'=>'1')); ?>
+		<?php echo $form->error($model,'GapExtend'); ?>
+	</div>
+            
+        <div class="row">
+		<?php echo $form->labelEx($model,'Filter'); ?>
+                <?php echo $form->ListBox($model,'Filter', 
+                    array('No' => 'No','Yes'=>'Yes')); ?>
+		<?php /*echo $form->textField($model,'Database',array('size'=>60,'maxlength'=>5000)); */?>
+		<?php echo $form->error($model,'Filter'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'Dropoff'); ?>
+                <?php echo $form->ListBox($model,'Dropoff', 
+                    array('0' => '0','2'=>'2','4'=>'4','8'=>'8','10'=>'10')); ?>
+		<?php /*echo $form->textField($model,'Database',array('size'=>60,'maxlength'=>5000)); */?>
+		<?php echo $form->error($model,'Dropoff'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'Seqrange'); ?>
+		<?php echo $form->textField($model,'Seqrange',array('size'=>60,'maxlength'=>5000, 'value'=>'START-END')); ?>
+		<?php echo $form->error($model,'Seqrange'); ?>
+	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'Gapalign'); ?>
+                <?php echo $form->ListBox($model,'Gapalign', 
+                    array('true' => 'true','false'=>'false')); ?>
+		<?php /*echo $form->textField($model,'Database',array('size'=>60,'maxlength'=>5000)); */?>
+		<?php echo $form->error($model,'Gapalign'); ?>
+	</div>
+   
+        <div class="row">
+		<?php echo $form->labelEx($model,'Compstats'); ?>
+                <?php echo $form->ListBox($model,'Compstats', 
+                    array('F' => 'F','D'=>'D','1'=>'1','2'=>'2','3'=>'3')); ?>
+		<?php /*echo $form->textField($model,'Database',array('size'=>60,'maxlength'=>5000)); */?>
+		<?php echo $form->error($model,'Compstats'); ?>
+	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('BLAST'); ?>
 	</div>
