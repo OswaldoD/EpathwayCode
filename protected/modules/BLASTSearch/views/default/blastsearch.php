@@ -107,6 +107,11 @@ $this->breadcrumbs=array(
 		<?php echo $form->textField($model,'Organism',array('size'=>60,'maxlength'=>5000)); ?>
 		<?php echo $form->error($model,'Organism'); ?>
 	</div>
+        <div class="row">
+		<?php echo $form->labelEx($model,'Organism2'); ?>
+		<?php echo $form->textField($model,'Organism2',array('size'=>60,'maxlength'=>5000)); ?>
+		<?php echo $form->error($model,'Organism2'); ?>
+	</div>
     
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('BLAST'); ?>
