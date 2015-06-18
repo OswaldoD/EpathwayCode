@@ -73,7 +73,7 @@ class BLASTGene extends CActiveRecord {
             array('Email', 'length', 'max' => 500),
             array('Scores', 'numerical', 'integerOnly' => true),
             array('JobTitle', 'length', 'max' => 500),
-            array('SequenceType, Program, Alignments, ExpectValThreshold,Organism', 'length', 'max' => 50),
+            array('SequenceType, Program, Alignments, ExpectValThreshold', 'length', 'max' => 50),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('Email,SequenceType,Sequence,Program,Database', 'safe', 'on' => 'search'),
@@ -184,12 +184,22 @@ class BLASTGene extends CActiveRecord {
         $curl = curl_init($service_url);
         $curl_post_data = array(
             "email" => $pBlastGene->Email,
+            "stype" => $pBlastGene->SequenceType, //'dna',
+            "sequence" => $pBlastGene->Sequence, //"AATCGATCGATGCTAGCTAGCTGACCACACACTGTTGCTGATCGATCGTAGCTAGCTGTGTGTACTACACCACACTGACTATCG",
             "program" => $pBlastGene->Program, //'blastn',
             "database" => $pBlastGene->Database, //'em_rel_pln',
-            "sequence" => $pBlastGene->Sequence, //"AATCGATCGATGCTAGCTAGCTGACCACACACTGTTGCTGATCGATCGTAGCTAGCTGTGTGTACTACACCACACTGACTATCG",
-            "stype" => $pBlastGene->SequenceType, //'dna',
-            "organism" =>$pBlastGene->Organism,
             "matrix"=>$pBlastGene->Matriz,
+            "scores"=>$pBlastGene->Scores,
+            "alignments"=>$pBlastGene->Alignments,
+            "exp"=>$pBlastGene->ExpectValThreshold,
+            "gapopen"=>$pBlastGene->GapOpen,
+            "gapext"=>$pBlastGene->GapExtend,
+            "filter"=>$pBlastGene->Filter,
+            "dropoff"=>$pBlastGene->Dropoff,
+            "seqrange"=>$pBlastGene->Seqrange,
+            "gapalign"=>$pBlastGene->Gapalign,
+          /*  "compstats"=>$pBlastGene->Compstats,*/
+            "organism" =>$pBlastGene->Organism,
         );
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
