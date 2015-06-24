@@ -55,6 +55,9 @@ $this->breadcrumbs=array(
 
 if($job_status === BLASTGene::$JOB_STATUS_FINISHED && $blast_data_provider != null){
     echo '<p>Move the cursor over the table to display the columns completely</p>';
+    echo '<p> Download File csv </p>';
+    
+    
     
     $this->widget('zii.widgets.grid.CGridView', array(
         'id' => 'blast-result-grid',

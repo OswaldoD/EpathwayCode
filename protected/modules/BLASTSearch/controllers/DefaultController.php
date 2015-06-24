@@ -87,6 +87,10 @@ class DefaultController extends Controller {
     
 
     public function actionViewJob($pJobId, $organismo) {
+        /*
+         * Muestra el job en la web page 
+         * 
+         */
         $model = new BLASTGene();
 
         $job_status = $model->getJobStatus($pJobId);
@@ -107,10 +111,53 @@ class DefaultController extends Controller {
                 'sort'=>array(
                     'attributes'=> BLASTResultItem::getInstance()->getAttributes()),
             ));
+            
+   // ***********************************
+   // descarga del archivo
+            // output headers so that the file is downloaded rather than displayed
+   /* header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=blastfile.csv');*/
+
+     //create a file pointer connected to the output stream
+       /* flush();
+        $output = fopen('php://output', 'wb');
+        ob_clean();*/
+    
+
+    // output the column headings
+       /* fputcsv($output, array('Database', 'ID', 'AC', 'Length','Score', 'Expectation', 'Identity', 'Gaps', 'Bits', 'Description'));
+        $i=0;
+        
+        while ($i < sizeof($BLASTResult_items)){
+            $file = array();
+        
+            $database = $BLASTResult_items[$i]['Database'];
+            $id = $BLASTResult_items[$i]['ID'];
+            $ac = $BLASTResult_items[$i]['AC'];
+            $length = $BLASTResult_items[$i]['Length'];
+            $score = $BLASTResult_items[$i]['Score'];
+            $expectation = $BLASTResult_items[$i]['Expectation'];
+            $identity = $BLASTResult_items[$i]['Identity'];
+            $gaps = $BLASTResult_items[$i]['Gaps'];
+            $bits = $BLASTResult_items[$i]['Bits'];
+            $description = $BLASTResult_items[$i]['Description'];
+            array_push($file, $database, $id, $ac, $length, $score, $expectation, $identity, $gaps, $bits, $description);
+            $i=$i+1;
+            fputcsv($output, $file);
+        }
+        fclose($output);
+        flush() ;*/
+
+     //var_dump($BLASTResult_items);
+            // ****************
+            // fin descarga de archivo
+    
         }else{
             $blast_data_provider = null;
             $BLASTResult_items = null;
         }
+        
+        // esto es lo que imprime la basura en el archivo
         
         $this->render('viewjob', array(
             'model' => $model,
